@@ -6,9 +6,13 @@ var projection = Ol3test.projection;
 var projectionName = Ol3test.projectionName;
 var resolutions = Ol3test.resolutions;
 
-var opencacheUrl = 'http://opencache.statkart.no/gatekeeper/gk/gk.open_wmts?';
+var statkartWMTSUrl = 'http://opencache.statkart.no/gatekeeper/gk/gk.open_wmts?';
 var initLat = 7043000;
 var initLon = 270000;
+
+Ol3test.statkartWMTSUrl = statkartWMTSUrl;
+Ol3test.initLat = initLat;
+Ol3test.initLon = initLon;
 
 var view = new ol.View({
     projection: projection,
@@ -16,33 +20,34 @@ var view = new ol.View({
     zoom: 7
 });
 
-var topoNorGraatone = new ol.layer.Tile({
-    title: "Topografisk norgeskart gråtone",
-    source: new ol.source.WMTS({
-        url: opencacheUrl,
-        layer: "topo2graatone",
-        format: 'image/png',
-        projection: projection,
-        matrixSet: projectionName,
-        tileGrid: new ol.tilegrid.WMTS({
-            origin: ol.extent.getTopLeft(projection.getExtent()),
-            resolutions: resolutions,
-            matrixIds: matrixIds
-        }),
-        style: 'default'
-    })
-});
+var topo2graatone = new KartverkLayer(
+    "Topografisk norgeskart gråtone",
+    "topo2graatone");
+
+var topo2 = new KartverkLayer(
+    "Topografisk norgeskart",
+    "topo2");
+
+var norgesGrunnkart = new KartverkLayer(
+    "Norges grunnkart",
+    "norges_grunnkart");
 
 var map = new ol.Map({
     target: 'map',
     layers: [
-        topoNorGraatone
+        topo2graatone,
+        topo2,
+        norgesGrunnkart
     ],
     view: view
 });
 
-var scaleLine = new ol.control.ScaleLine();
-map.addControl(scaleLine);
+Ol3test.map = map;
+
+//Problem using ScaleLine with debug version of OpenLayers
+//Error is: Uncaught AssertionError: Assertion failed: transform should be defined
+/*var scaleLine = new ol.control.ScaleLine();
+map.addControl(scaleLine);*/
 
 var rotate = new ol.control.Rotate();
 map.addControl(rotate);
