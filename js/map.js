@@ -20,15 +20,15 @@ var view = new ol.View({
     zoom: 7
 });
 
-var topo2graatone = new KartverkLayer(
+var topo2graatone = new Ol3test.KartverkLayer(
     "Topografisk norgeskart gråtone",
     "topo2graatone");
 
-var topo2 = new KartverkLayer(
+var topo2 = new Ol3test.KartverkLayer(
     "Topografisk norgeskart",
     "topo2");
 
-var norgesGrunnkart = new KartverkLayer(
+var norgesGrunnkart = new Ol3test.KartverkLayer(
     "Norges grunnkart",
     "norges_grunnkart");
 
@@ -49,8 +49,8 @@ Ol3test.map = map;
 /*var scaleLine = new ol.control.ScaleLine();
 map.addControl(scaleLine);*/
 
-var rotate = new ol.control.Rotate();
-map.addControl(rotate);
+/*var rotate = new ol.control.Rotate();
+map.addControl(rotate);*/
 
 var mousePosition = new ol.control.MousePosition({
     target: 'mouseposition'
@@ -59,3 +59,6 @@ map.addControl(mousePosition);
 
 var zoomSlider = new ol.control.ZoomSlider();
 map.addControl(zoomSlider);
+
+var layerSwitcher = new Ol3test.LayerSwitcher();
+map.addControl(layerSwitcher);

@@ -1,4 +1,5 @@
-var Ol3test = Ol3test || {};
+window.Ol3test = Ol3test || {};
+var Ol3test = window.Ol3test;
 
 var projectionName = 'EPSG:32633';
 var extent = {

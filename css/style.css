@@ -6,3 +6,33 @@
 .mouseposition {
     height: 20px;
 }
+
+.layerswitcher {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.layerswitcher .panel {
+    padding-right: 50px;
+    border: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    display:none;
+}
+
+.layerswitcher.shown .panel {
+    display: block;
+}
+
+.layerswitcher button {
+    float: right;
+    width: 40px;
+    height: 40px;
+    background-image: url("../res/layerswitcher_icon.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 2px;
+    background-color: white;
+    border: none;
+}

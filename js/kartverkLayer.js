@@ -1,4 +1,4 @@
-var KartverkLayer = function(title, layer) {
+Ol3test.KartverkLayer = function(title, layer) {
     return new ol.layer.Tile({
        title: title,
        source: new ol.source.WMTS({
